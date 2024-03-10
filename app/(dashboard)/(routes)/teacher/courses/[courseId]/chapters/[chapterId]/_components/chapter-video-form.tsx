@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import * as z from "zod";
+import MuxPlayer from "@mux/mux-player-react";
 
 import { FileUpload } from "@/components/file-upload";
 import { Button } from "@/components/ui/button";
@@ -72,7 +73,9 @@ export const ChapterVideoForm = ({
             <Video className="h-10 w-10 text-slate-500" />
           </div>
         ) : (
-          <div className="relative aspect-video mt-2">Video Uploaded!</div>
+          <div className="relative aspect-video mt-2">
+            <MuxPlayer playbackId={initialData?.muxData?.playbackId || ""} />
+          </div>
         ))}
       {isEditing && (
         <div>
